@@ -20,6 +20,7 @@ public class NumberGeneration {
     static int index = 0;
     static int index1 = 0;
     static int index2 = 0;
+
     static final char dm = (char) 34;
 
     static final int REGION = 116;
@@ -49,27 +50,28 @@ public class NumberGeneration {
         int num = rm.nextInt(999);
 
         if (num <= 9 && !list1.contains(random)) {
-            random = "Ответ: " + dm+Nomer[rand1] + "00" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
+            random = "Ответ: " + dm + Nomer[rand1] + "00" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
             list1.add(random);
         } else if (num > 9 && num < 100 && !list1.contains(random)) {
-            random = "Ответ: " +dm+ Nomer[rand1] + "0" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
+            random = "Ответ: " + dm + Nomer[rand1] + "0" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
             list1.add(random);
         } else if (num >= 100) {
-            random = "Ответ: " + dm+Nomer[rand1] + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
+            random = "Ответ: " + dm + Nomer[rand1] + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
             list1.add(random);
         } else if (num >= 100 && !list1.contains(random)) {
-            random = "Ответ: " + dm+Nomer[rand1] + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
+            random = "Ответ: " + dm + Nomer[rand1] + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
             list1.add(random);
         } else {
-            random = "Ответ: " + dm+Nomer[rand1] + "0" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
+            random = "Ответ: " + dm + Nomer[rand1] + "0" + num + Nomer[rand2] + Nomer[rand3] + " " + REGION + " " + STRANA + " ";
             list1.add(random);
         }
-        return random+dm;
+        return random + dm;
 
     }
 
     @GetMapping("/next/Next")
     public static String getNext() {
+
 
         List<String> list = new ArrayList<>();
         list.add("А");
@@ -91,15 +93,12 @@ public class NumberGeneration {
 
         } else if (i > 9 && i < 100) {
             next = "Ответ: " + dm + list.get(index) + "0" + i++ + list.get(index1) + list.get(index2) + " " + REGION + " " + STRANA;
-
-        } else if (i >= 100) {
+        } else if (i >= 1000) {
             i = 0;
             next = "Ответ: " + dm + list.get(index) + "00" + i++ + list.get(index1) + list.get(index2++) + " " + REGION + " " + STRANA;
         }
-        else if (i >= 100 && next.equalsIgnoreCase("Ответ: " + dm + list.get(index) + "00" + i++ + list.get(index1) + list.get(1) + " " + REGION + " " + STRANA)) {
-            i = 0;
-            next = "Ответ: " + dm + list.get(index++) + "00" + i++ + list.get(index1) + list.get(index2) + " " + REGION + " " + STRANA;
-        } else {
+
+        else {
             next = "Ответ: " + dm + list.get(index) + i++ + list.get(index1) + list.get(index2) + " " + REGION + " " + STRANA;
         }
 
